@@ -3,6 +3,6 @@ table tr.disabled {
   color: white;
 }
 
-table tr:not(.disabled) {
+table tr.customer-data:not(.disabled) {
   cursor: pointer;
 }

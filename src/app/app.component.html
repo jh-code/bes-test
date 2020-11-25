@@ -6,14 +6,14 @@
       <caption>List of customers</caption>
       <thead>
         <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Location Abbr.</th>
-          <th scope="col">Location Name</th>
+          <th scope="col">{{ 'first_name' | translate }}</th>
+          <th scope="col">{{ 'last_name' | translate }}</th>
+          <th scope="col">{{ 'location_abbr' | translate }}</th>
+          <th scope="col">{{ 'location.name' | translate }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let customer of customerData" [class.disabled]="!customer.active"
+        <tr class="customer-data" *ngFor="let customer of customerData" [class.disabled]="!customer.active"
           (click)="customer.active && clickCustomer(customer)">
           <td>{{customer.first_name}}</td>
           <td>{{customer.last_name}}</td>
