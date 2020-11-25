@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Customer } from './models/customer';
 import { DataService } from './services/data.service';
 
@@ -9,11 +9,15 @@ import { DataService } from './services/data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit  {
+  @ViewChild('content', { static: false }) content;
+
   public customers: Customer[] = [];
   public provinces = [];
+  public selectedCustomer: Customer;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private modalService: NgbModal
   ) {
     //
   }
@@ -33,5 +37,11 @@ export class AppComponent implements OnInit  {
   public getProvinceName(abbreviation: string): string {
     return this.provinces
       .find(province => province.abbreviation === abbreviation)
+  }
+
+  public clickCustomer(customer: Customer): void {
+    console.log(customer);
+    this.selectedCustomer = customer;
+    this.modalService.open(this.content);
   }
 }
