@@ -1,0 +1,10 @@
+{
+  "/api/*": {
+    "target": "https://ballistictest.azurewebsites.net",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/fake-api/*": {
+    "target": "http://localhost:3000"
+  }
+}
