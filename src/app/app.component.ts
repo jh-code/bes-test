@@ -9,7 +9,6 @@ import { DataService } from './services/data.service';
 import { CustomerModalComponent } from './components/customer-modal/customer-modal.component';
 import { ApiErrorService } from './services/api-error.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -71,7 +70,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.customers = customers;
     });
 
-    this.errorSub = this.apiErrorService.error.subscribe(error => {
+    this.errorSub = this.apiErrorService.error.subscribe((error: HttpErrorResponse) => {
       this.apiError = error;
       this.apiErrorClosed = false;
 
