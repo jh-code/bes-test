@@ -16,7 +16,7 @@ export class ApiErrorInterceptor implements HttpInterceptor {
     //
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<HttpErrorResponse>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
       .pipe(
         catchError((error: HttpErrorResponse): Observable<never> => {

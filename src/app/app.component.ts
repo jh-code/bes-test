@@ -81,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  public clickCustomer(customer: Customer): void {
+  public clickCustomer(customer: any): void {
     const modalRef = this.modalService.open(CustomerModalComponent);
 
     modalRef.componentInstance.customer = customer;
