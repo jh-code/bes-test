@@ -8,7 +8,7 @@ import { DataService } from './services/data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   @ViewChild('content', { static: false }) content;
 
   public customers: Customer[] = [];
@@ -23,11 +23,12 @@ export class AppComponent implements OnInit  {
   }
 
   public ngOnInit(): void {
-    this.dataService.getCustomers()
-      .subscribe(customers => this.customers = customers);
-
     this.dataService.getProvinces()
-      .subscribe(provinces => this.provinces = provinces);
+      .subscribe(provinces => {
+        this.provinces = provinces;
+        this.dataService.getCustomers()
+          .subscribe(customers => this.customers = customers);
+      });
   }
 
   public splitName(customerName: string): string[] {
@@ -40,7 +41,6 @@ export class AppComponent implements OnInit  {
   }
 
   public clickCustomer(customer: Customer): void {
-    console.log(customer);
     this.selectedCustomer = customer;
     this.modalService.open(this.content);
   }
