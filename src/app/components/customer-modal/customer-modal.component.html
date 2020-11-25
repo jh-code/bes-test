@@ -6,9 +6,9 @@
 </div>
 <div class="modal-body">
   <ul class="list-group">
-    <li class="list-group-item">First Name: {{customer.first_name}}</li>
-    <li class="list-group-item">Last Name: {{customer.last_name}}</li>
-    <li class="list-group-item">Location Abbr.: {{customer.location_abbr}}</li>
-    <li class="list-group-item">Location Name: {{customer.location_name}}</li>
+    <li class="list-group-item">{{ 'first_name' | translate }}: {{customer.first_name}}</li>
+    <li class="list-group-item">{{ 'last_name' | translate }}: {{customer.last_name}}</li>
+    <li class="list-group-item">{{ 'location_abbr' | translate}}: {{customer.location_abbr}}</li>
+    <li class="list-group-item">{{ 'location_name' | translate}}: {{customer.location_name}}</li>
   </ul>
 </div>
