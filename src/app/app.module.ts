@@ -1,14 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbAlertModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
+import { CustomerModalComponent } from './components/customer-modal/customer-modal.component';
+import { ApiErrorService } from './services/api-error.service';
+import { ApiErrorInterceptor } from './http-interceptors/api-error.interceptor'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomerModalComponent
+  ],
+  entryComponents: [
+    CustomerModalComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +24,13 @@ import { DataService } from './services/data.service';
     NgbAlertModule
   ],
   providers: [
-    DataService
+    DataService,
+    ApiErrorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { Customer } from '../models/customer';
+import { Province } from '../models/province';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +20,11 @@ export class DataService {
   public getCustomers(): Observable<Customer[]> {
     return this.http.get('/api/customers')
       .pipe(
-        map(customers => customers as Customer[]),
-        tap(customers => {
-          const firstCustomer = customers
-            .find(customer => customer !== undefined);
-          
-          this.postFirstCustomer(firstCustomer)
-            .subscribe(res => console.log(res));
-        })
+        map(customers => customers as Customer[])
       );
   }
 
-  private postFirstCustomer(customer): Observable<any> {
+  public postFirstCustomer(customer): Observable<any> {
     const data = {
       firstcustomer: btoa(JSON.stringify(customer)),
       timestamp: new Date().toISOString()
@@ -43,7 +37,10 @@ export class DataService {
     return this.http.post('/api/customer', data, { headers });
   }
 
-  public getProvinces(): Observable<any> {
-    return this.http.get('/fake-api/provinces');
+  public getProvinces(): Observable<Province[]> {
+    return this.http.get('/fake-api/provinces')
+      .pipe(
+        map(provinces => provinces as Province[])
+      );
   }
 }

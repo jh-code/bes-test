@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Customer Detail</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ul class="list-group">
+    <li class="list-group-item">First Name: {{customer.first_name}}</li>
+    <li class="list-group-item">Last Name: {{customer.last_name}}</li>
+    <li class="list-group-item">Location Abbr.: {{customer.location_abbr}}</li>
+    <li class="list-group-item">Location Name: {{customer.location_name}}</li>
+  </ul>
+</div>
