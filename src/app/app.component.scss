@@ -1,0 +1,8 @@
+table tr.disabled {
+  background-color: gray;
+  color: white;
+}
+
+table tr:not(.disabled) {
+  cursor: pointer;
+}
